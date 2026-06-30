@@ -1,0 +1,103 @@
+spring:
+  application:
+    name: banking
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/banking_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Ho_Chi_Minh&allowPublicKeyRetrieval=true
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+
+  flyway:
+    enabled: false
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:leanhtuan7126@gmail.com}
+    password: ${MAIL_PASSWORD:vvbm mykg dbde iccr}   # Thay bằng App Password 16 ký tự từ Google
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+        debug: false
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2MB
+      max-request-size: 5MB
+
+server:
+  port: 8080
+
+app:
+  admin:
+    # Tài khoản đăng nhập trang /admin. Nên override bằng biến môi trường khi demo/chạy thật.
+    username: ${ADMIN_USERNAME:admin}
+    password: ${ADMIN_PASSWORD:admin123}
+    session-minutes: ${ADMIN_SESSION_MINUTES:480}
+
+  jwt:
+    secret: YmFua2luZ1N1cGVyU2VjcmV0S2V5Rm9yQXV0aGVudGljYXRpb24yMDI1
+    expiration-ms: 86400000
+    refresh-expiration-ms: 604800000
+
+  otp:
+    expiry-minutes: 5
+    dev-mode: false
+
+  mail:
+    from: ${MAIL_FROM:${spring.mail.username}}
+    from-name: Banking App
+
+  upload:
+    # Thư mục lưu file — có thể override bằng biến môi trường UPLOAD_DIR
+    dir: ${UPLOAD_DIR:uploads}
+
+  fcm:
+    # Tắt mặc định — bật bằng: FCM_ENABLED=true + FCM_SERVICE_ACCOUNT_KEY=<path-to-json|json-content>
+    enabled: ${FCM_ENABLED:false}
+    # Có thể là đường dẫn tới file JSON hoặc nội dung JSON trực tiếp (cho Docker/K8s)
+    service-account-key: ${FCM_SERVICE_ACCOUNT_KEY:}
+
+  interbank:
+    success-rate: 85       # Tỷ lệ thành công giả lập (%)
+    delay-min-ms: 3000     # Độ trễ tối thiểu (ms)
+    delay-max-ms: 8000     # Độ trễ tối đa (ms)
+
+  qr:
+    bank-bin: "970422"     # MB Bank (Ngân hàng Quân đội)
+    bank-name: "MB Bank"
+    city: "Ha Noi"
+
+  vietqr:
+    # Lấy client-id và api-key tại https://my.vietqr.io
+    # Khi để trống → tự sinh QR bằng EMVCo (fallback mode)
+    client-id: ${VIETQR_CLIENT_ID:5fac98bd-d963-4147-93ca-4cede91ae2a6}
+    api-key: ${VIETQR_API_KEY:e579b168-bac2-4874-a89c-d1cef72388d6}
+    template: compact        # compact | compact2 | qr_only | print
+
+  savings:
+    min-amount: 1000000    # Số tiền gửi tối thiểu (VND)
+    demand-rate: 0.50      # Lãi suất không kỳ hạn (%/năm) — áp dụng khi rút trước hạn
+    # Lãi suất năm (%) theo kỳ hạn — khớp với INTEREST_RATES trong SavingsServiceImpl
+    rates:
+      1:  3.50
+      3:  4.50
+      6:  5.50
+      12: 6.50
+      24: 7.00

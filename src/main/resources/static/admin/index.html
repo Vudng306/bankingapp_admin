@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Banking Admin</title>
+  <link rel="stylesheet" href="/admin/styles.css" />
+</head>
+<body>
+  <div id="loginView" class="login-wrap">
+    <form id="loginForm" class="login-card">
+      <div class="brand-dot"></div>
+      <h1>Banking Admin</h1>
+      <p>Trang quản trị dùng đúng DB/entity hiện có của backend, không cần thêm bảng/cột.</p>
+      <label>Tài khoản admin</label>
+      <input id="username" autocomplete="username" placeholder="admin" value="admin" />
+      <label>Mật khẩu</label>
+      <input id="password" type="password" autocomplete="current-password" placeholder="admin123" />
+      <button type="submit">Đăng nhập</button>
+      <small>Mặc định: <b>admin / admin123</b>. Khi chạy thật nên đổi bằng biến cấu hình <code>app.admin.username</code>, <code>app.admin.password</code>.</small>
+      <div id="loginError" class="error"></div>
+    </form>
+  </div>
+
+  <div id="appView" class="app hidden">
+    <aside class="sidebar">
+      <div class="logo"><span></span><strong>Bank Admin</strong></div>
+      <nav id="nav"></nav>
+      <button id="logoutBtn" class="ghost">Đăng xuất</button>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h2 id="pageTitle">Dashboard</h2>
+          <p id="pageDesc">Theo dõi và quản lý toàn bộ dữ liệu nghiệp vụ đang có trong backend.</p>
+        </div>
+        <div class="actions">
+          <button id="refreshBtn">Làm mới</button>
+          <button id="exportBtn" class="secondary">Xuất CSV</button>
+          <button id="printBtn" class="secondary">In/PDF</button>
+        </div>
+      </header>
+      <section id="content" class="content"></section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <div id="modal" class="modal hidden"><div class="modal-card"><button class="modal-close" onclick="closeModal()">×</button><pre id="modalBody"></pre></div></div>
+  <script src="/admin/app.js"></script>
+</body>
+</html>

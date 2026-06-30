@@ -1,0 +1,11 @@
+1, Core — hoàn thành trong ~6 tuần đầu:
+- Đăng ký / Đăng nhập / Quên mật khẩu — có xác thực OTP qua SMS hoặc email, mã PIN bảo mật.
+- Trang chủ (Dashboard) — hiển thị số dư tài khoản, lịch sử giao dịch gần đây, thông báo.
+- Chuyển tiền — bao gồm chuyển nội bộ (trong app) và chuyển liên ngân hàng (giả lập). Cần có nhập số tài khoản hoặc chọn từ danh bạ, xác nhận bằng mã PIN/OTP, và hiển thị biên lai giao dịch.
+- Lịch sử giao dịch — lọc theo ngày, loại giao dịch, tìm kiếm, xuất file PDF hoặc Excel nếu kịp.
+- Quản lý tài khoản cá nhân — xem thông tin, đổi mật khẩu, đổi PIN, cập nhật ảnh đại diện.
+2,Nâng cao - tuần 7-10
+- Tạo mã QR cho tài khoản và quét QR để chuyển tiền
+- Tiết kiệm — mở sổ tiết kiệm với kỳ hạn, lãi suất, tính lãi tự động
+- Thông báo đẩy (Push Notification) — nhắc nhở giao dịch, biến động số dư.
+- Báo cáo chi tiêu — biểu đồ thống kê thu/chi theo tuần, tháng.
