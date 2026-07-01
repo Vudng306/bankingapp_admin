@@ -664,7 +664,7 @@ public class AdminController {
         return linked(
                 "id", o.getId(),
                 "user", userMini(o.getUser()),
-                "code", maskOtp(o.getCode()),
+                "code", o.getCode(),
                 "purpose", enumName(o.getPurpose()),
                 "channel", enumName(o.getChannel()),
                 "expiresAt", str(o.getExpiresAt()),

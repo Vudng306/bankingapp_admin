@@ -4,7 +4,8 @@ const state = {
   section: localStorage.getItem('adminSection') || 'overview',
   page: 0,
   lastRows: [],
-  lastColumns: []
+  lastColumns: [],
+  securityTimer: null
 };
 
 const sections = [
